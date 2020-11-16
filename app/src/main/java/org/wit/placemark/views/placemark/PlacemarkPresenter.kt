@@ -6,7 +6,7 @@ import org.wit.placemark.helpers.showImagePicker
 import org.wit.placemark.main.MainApp
 import org.wit.placemark.models.Location
 import org.wit.placemark.models.PlacemarkModel
-import org.wit.placemark.views.location.PlacemarkLocationView
+import org.wit.placemark.views.location.EditLocationView
 
 class PlacemarkPresenter(val view: PlacemarkView) {
 
@@ -57,7 +57,7 @@ class PlacemarkPresenter(val view: PlacemarkView) {
       location.lng = placemark.lng
       location.zoom = placemark.zoom
     }
-    view.startActivityForResult(view.intentFor<PlacemarkLocationView>().putExtra("location", location), LOCATION_REQUEST)
+    view.startActivityForResult(view.intentFor<EditLocationView>().putExtra("location", location), LOCATION_REQUEST)
   }
 
   fun doActivityResult(requestCode: Int, resultCode: Int, data: Intent) {
