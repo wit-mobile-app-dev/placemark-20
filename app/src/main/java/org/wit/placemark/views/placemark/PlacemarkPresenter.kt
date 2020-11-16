@@ -1,4 +1,4 @@
-package org.wit.placemark.activities
+package org.wit.placemark.views.placemark
 
 import android.content.Intent
 import org.jetbrains.anko.intentFor
@@ -6,6 +6,7 @@ import org.wit.placemark.helpers.showImagePicker
 import org.wit.placemark.main.MainApp
 import org.wit.placemark.models.Location
 import org.wit.placemark.models.PlacemarkModel
+import org.wit.placemark.views.location.PlacemarkLocationView
 
 class PlacemarkPresenter(val view: PlacemarkView) {
 

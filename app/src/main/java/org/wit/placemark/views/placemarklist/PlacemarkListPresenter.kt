@@ -1,10 +1,12 @@
-package org.wit.placemark.activities
+package org.wit.placemark.views.placemarklist
 
 import org.jetbrains.anko.intentFor
 import org.jetbrains.anko.startActivity
 import org.jetbrains.anko.startActivityForResult
+import org.wit.placemark.activities.PlacemarkMapsActivity
 import org.wit.placemark.main.MainApp
 import org.wit.placemark.models.PlacemarkModel
+import org.wit.placemark.views.placemark.PlacemarkView
 
 class PlacemarkListPresenter(val view: PlacemarkListView) {
 

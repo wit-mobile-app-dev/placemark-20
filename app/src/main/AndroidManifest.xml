@@ -13,8 +13,8 @@
       android:supportsRtl="true"
       android:theme="@style/AppTheme">
     <activity android:name=".activities.PlacemarkMapsActivity"></activity>
-    <activity android:name=".activities.PlacemarkView" />
-    <activity android:name=".activities.PlacemarkListView">
+    <activity android:name=".views.placemark.PlacemarkView" />
+    <activity android:name=".views.placemarklist.PlacemarkListView">
       <intent-filter>
         <action android:name="android.intent.action.MAIN" />
 
@@ -27,7 +27,7 @@
         android:value="@string/google_maps_key" />
 
     <activity
-        android:name=".activities.PlacemarkLocationView"
+        android:name=".views.location.PlacemarkLocationView"
         android:label="@string/title_activity_map" />
   </application>
 
