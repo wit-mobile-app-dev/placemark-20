@@ -41,6 +41,7 @@ class PlacemarkView : BaseView(), AnkoLogger {
 
   override fun onCreateOptionsMenu(menu: Menu): Boolean {
     menuInflater.inflate(R.menu.menu_placemark, menu)
+    if (presenter.edit && menu != null) menu.getItem(0).setVisible(true)
     return super.onCreateOptionsMenu(menu)
   }
 
@@ -55,6 +56,9 @@ class PlacemarkView : BaseView(), AnkoLogger {
         } else {
           presenter.doAddOrSave(placemarkTitle.text.toString(), description.text.toString())
         }
+      }
+      R.id.item_cancel -> {
+        finish()
       }
     }
     return super.onOptionsItemSelected(item)
