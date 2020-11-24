@@ -25,9 +25,15 @@ class PlacemarkView : BaseView(), AnkoLogger {
 
     presenter = initPresenter (PlacemarkPresenter(this)) as PlacemarkPresenter
 
-    chooseImage.setOnClickListener { presenter.doSelectImage() }
+    chooseImage.setOnClickListener {
+      presenter.cachePlacemark(placemarkTitle.text.toString(), description.text.toString())
+      presenter.doSelectImage()
+    }
 
-    placemarkLocation.setOnClickListener { presenter.doSetLocation() }
+    placemarkLocation.setOnClickListener {
+      presenter.cachePlacemark(placemarkTitle.text.toString(), description.text.toString())
+      presenter.doSetLocation()
+    }
   }
 
   override fun showPlacemark(placemark: PlacemarkModel) {
@@ -41,7 +47,7 @@ class PlacemarkView : BaseView(), AnkoLogger {
 
   override fun onCreateOptionsMenu(menu: Menu): Boolean {
     menuInflater.inflate(R.menu.menu_placemark, menu)
-    if (presenter.edit && menu != null) menu.getItem(0).setVisible(true)
+    if (presenter.edit) menu.getItem(0).setVisible(true)
     return super.onCreateOptionsMenu(menu)
   }
 

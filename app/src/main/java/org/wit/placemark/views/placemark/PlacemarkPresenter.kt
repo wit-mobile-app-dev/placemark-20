@@ -31,6 +31,11 @@ class PlacemarkPresenter(view: BaseView) : BasePresenter(view) {
     view?.finish()
   }
 
+  fun cachePlacemark (title: String, description: String) {
+    placemark.title = title;
+    placemark.description = description
+  }
+
   fun doCancel() {
     view?.finish()
   }
