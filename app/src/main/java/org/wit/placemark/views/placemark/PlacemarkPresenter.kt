@@ -1,5 +1,6 @@
 package org.wit.placemark.views.placemark
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
@@ -29,16 +30,22 @@ class PlacemarkPresenter(view: BaseView) : BasePresenter(view) {
       view.showPlacemark(placemark)
     } else {
       if (checkLocationPermissions(view)) {
-        // todo get the current location
+        doSetCurrentLocation()
       }
+    }
+  }
+
+  @SuppressLint("MissingPermission")
+  fun doSetCurrentLocation() {
+    locationService.lastLocation.addOnSuccessListener {
+      locationUpdate(it.latitude, it.longitude)
     }
   }
 
   override fun doRequestPermissionsResult(requestCode: Int, permissions: Array<String>, grantResults: IntArray) {
     if (isPermissionGranted(requestCode, grantResults)) {
-      // todo get the current location
+      doSetCurrentLocation()
     } else {
-      // permissions denied, so use the default location
       locationUpdate(defaultLocation.lat, defaultLocation.lng)
     }
   }
@@ -92,16 +99,7 @@ class PlacemarkPresenter(view: BaseView) : BasePresenter(view) {
   }
 
   fun doSetLocation() {
-    if (edit == false) {
-      view?.navigateTo(VIEW.LOCATION, LOCATION_REQUEST, "location", defaultLocation)
-    } else {
-      view?.navigateTo(
-        VIEW.LOCATION,
-        LOCATION_REQUEST,
-        "location",
-        Location(placemark.lat, placemark.lng, placemark.zoom)
-      )
-    }
+    view?.navigateTo(VIEW.LOCATION, LOCATION_REQUEST, "location", Location(placemark.lat, placemark.lng, placemark.zoom))
   }
 
   override fun doActivityResult(requestCode: Int, resultCode: Int, data: Intent) {
