@@ -3,9 +3,8 @@ package org.wit.placemark.main
 import android.app.Application
 import org.jetbrains.anko.AnkoLogger
 import org.jetbrains.anko.info
-import org.wit.placemark.models.PlacemarkJSONStore
-import org.wit.placemark.models.PlacemarkMemStore
 import org.wit.placemark.models.PlacemarkStore
+import org.wit.placemark.models.json.PlacemarkJSONStore
 
 class MainApp : Application(), AnkoLogger {
 
