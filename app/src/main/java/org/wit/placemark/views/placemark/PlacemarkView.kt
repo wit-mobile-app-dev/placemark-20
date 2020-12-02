@@ -48,8 +48,7 @@ class PlacemarkView : BaseView(), AnkoLogger {
     if (placemark.image != null) {
       chooseImage.setText(R.string.change_placemark_image)
     }
-    lat.setText("%.6f".format(placemark.lat))
-    lng.setText("%.6f".format(placemark.lng))
+    this.showLocation(placemark.location)
   }
 
   override fun onCreateOptionsMenu(menu: Menu): Boolean {
