@@ -71,6 +71,11 @@ class PlacemarkPresenter(view: BaseView) : BasePresenter(view) {
     }
   }
 
+  fun cachePlacemark (title: String, description: String) {
+    placemark.title = title;
+    placemark.description = description
+  }
+
   fun doConfigureMap(m: GoogleMap) {
     map = m
     locationUpdate(placemark.location)
