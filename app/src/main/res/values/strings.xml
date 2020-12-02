@@ -17,4 +17,7 @@
   <string name="placemarkDescription">Placemark Description</string>
   <string name="placemarkPicture">Placemark Picture</string>
   <string name="menu_savePlacemark">Save</string>
+  <string name="title_activity_placemark_list">Placemarks</string>
+  <string name="title_activity_placemark">Placemark</string>
+  <string name="title_activity_location">Placemark</string>
 </resources>
