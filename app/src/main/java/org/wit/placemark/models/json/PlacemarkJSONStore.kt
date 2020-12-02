@@ -40,7 +40,6 @@ class PlacemarkJSONStore : PlacemarkStore, AnkoLogger {
     serialize()
   }
 
-
   override fun update(placemark: PlacemarkModel) {
     val placemarksList = findAll() as ArrayList<PlacemarkModel>
     var foundPlacemark: PlacemarkModel? = placemarksList.find { p -> p.id == placemark.id }
@@ -48,9 +47,7 @@ class PlacemarkJSONStore : PlacemarkStore, AnkoLogger {
       foundPlacemark.title = placemark.title
       foundPlacemark.description = placemark.description
       foundPlacemark.image = placemark.image
-      foundPlacemark.lat = placemark.lat
-      foundPlacemark.lng = placemark.lng
-      foundPlacemark.zoom = placemark.zoom
+      foundPlacemark.location = placemark.location
     }
     serialize()
   }
