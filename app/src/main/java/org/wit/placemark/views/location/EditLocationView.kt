@@ -4,12 +4,10 @@ import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import com.google.android.gms.maps.GoogleMap
-import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.Marker
 import kotlinx.android.synthetic.main.activity_map.*
 import org.wit.placemark.R
 import org.wit.placemark.views.BaseView
-import org.wit.placemark.views.location.EditLocationPresenter
 
 class EditLocationView : BaseView(), GoogleMap.OnMarkerDragListener, GoogleMap.OnMarkerClickListener {
 
@@ -19,7 +17,7 @@ class EditLocationView : BaseView(), GoogleMap.OnMarkerDragListener, GoogleMap.O
     super.onCreate(savedInstanceState)
     setContentView(R.layout.activity_map)
     super.init(toolbar, true)
-    
+
     presenter = initPresenter(EditLocationPresenter(this)) as EditLocationPresenter
 
     mapView.onCreate(savedInstanceState);
@@ -28,6 +26,11 @@ class EditLocationView : BaseView(), GoogleMap.OnMarkerDragListener, GoogleMap.O
       it.setOnMarkerClickListener(this)
       presenter.doConfigureMap(it)
     }
+  }
+
+  override fun showLocation(latitude : Double, longitude : Double) {
+    lat.setText("%.6f".format(latitude))
+    lng.setText("%.6f".format(longitude))
   }
 
   override fun onCreateOptionsMenu(menu: Menu): Boolean {
