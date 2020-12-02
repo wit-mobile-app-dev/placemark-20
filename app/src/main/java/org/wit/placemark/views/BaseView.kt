@@ -38,6 +38,12 @@ open abstract class BaseView() : AppCompatActivity(), AnkoLogger {
     startActivityForResult(intent, code)
   }
 
+  fun init(toolbar: Toolbar, upEnabled: Boolean) {
+    toolbar.title = title
+    setSupportActionBar(toolbar)
+    supportActionBar?.setDisplayHomeAsUpEnabled(upEnabled)
+  }
+
   fun initPresenter(presenter: BasePresenter): BasePresenter {
     basePresenter = presenter
     return presenter
