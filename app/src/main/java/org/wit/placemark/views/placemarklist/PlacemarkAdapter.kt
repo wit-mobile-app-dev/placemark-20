@@ -4,6 +4,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import kotlinx.android.synthetic.main.card_placemark.view.*
 import org.wit.placemark.R
 import org.wit.placemark.helpers.readImageFromPath
@@ -40,7 +41,7 @@ class PlacemarkAdapter constructor(
     fun bind(placemark: PlacemarkModel, listener: PlacemarkListener) {
       itemView.placemarkTitle.text = placemark.title
       itemView.description.text = placemark.description
-      itemView.imageIcon.setImageBitmap(readImageFromPath(itemView.context, placemark.image))
+      Glide.with(itemView.context).load(placemark.image).into(itemView.imageIcon);
       itemView.setOnClickListener { listener.onPlacemarkClick(placemark) }
     }
   }
